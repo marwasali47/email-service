@@ -1,0 +1,2 @@
+UPDATE mail_template SET subject ='[SmartMobile workspace] Channel verification code' where id = 13;
+UPDATE mail_template SET subject ='[SmartMobile workspace] Channel verification code' where id = 14;

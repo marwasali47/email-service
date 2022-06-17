@@ -1,0 +1,41 @@
+security:
+  oauth2:
+    client:
+      clientId: web
+      clientSecret: secret
+    accessTokenUri : http://testing-oauth-service.smartnomadworkspace.svc.cluster.local:8985/oauth/check_token
+    resource:
+      tokenInfoUri: http://testing-oauth-service.smartnomadworkspace.svc.cluster.local:8985/oauth/check_token
+
+
+kafka:
+  bootstrap-servers: testing-kafka-headless.smartnomadworkspace.svc.cluster.local:9092
+  consumer:
+    group:
+      id: email_group
+    topic: email_topic
+
+proxy:
+  enabled: true
+  host: cs.pr-proxy.service.sd.diod.tech
+  port: 3128
+
+database:
+  driver: org.postgresql.Driver
+  url: jdbc:postgresql://testing-postgresql.smartnomadworkspace.svc.cluster.local:5432/test
+  username: postgres
+  password: bYFn5yVBz9Amfk9L
+  hibernate:
+    dialect: org.hibernate.dialect.ProgressDialect
+    show_sql: false
+  db: # Available db.development.migration strategies: cleanMigrate, migrate
+    migration:
+      strategy: migrate
+  connection: # Connection pooling configuration
+    pool:
+      max:
+        size: 30
+
+
+logging:
+  config: 'classpath:log4j2.xml'

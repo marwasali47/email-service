@@ -1,0 +1,11 @@
+server:
+  port: 9090
+
+security:
+  oauth2:
+    client:
+      clientId: web
+      clientSecret: secret
+    accessTokenUri : http://testing-oauth-service.smartnomadworkspace.svc.cluster.local:8985/oauth/check_token
+    resource:
+      tokenInfoUri: http://testing-oauth-service.smartnomadworkspace.svc.cluster.local:8985/oauth/check_token

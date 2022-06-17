@@ -1,0 +1,59 @@
+server:
+  port: 8011
+
+security:
+  oauth2:
+    client:
+      clientId: web
+      clientSecret: secret
+    accessTokenUri : http://localhost:8985/oauth/check_token
+    resource:
+      tokenInfoUri: http://localhost:8985/oauth/check_token
+
+mail:
+  smtp:
+    host: 'smtp.gmail.com'
+    port: 587
+    username: 'orangelabegy@gmail.com'
+    password: 'dxqspkuzzdanswlf'
+    from: 'orangelabegy@gmail.com'
+
+kafka:
+  bootstrap-servers: localhost:9092
+  consumer:
+    group:
+      id: email_group
+    topic: email_topic
+
+# Database migration configuration
+flyway:
+  migration:
+    sample:
+      data:
+        enabled: true
+        folder: db/samples
+    schema:
+      folder: db/migration
+
+database:
+  driver: org.postgresql.Driver
+  url: jdbc:postgresql://localhost:5432/test
+  username: postgres
+  password: admin
+  hibernate:
+    dialect: org.hibernate.dialect.ProgressDialect
+    show_sql: false
+  db: # Available db.development.migration strategies: cleanMigrate, migrate
+    migration:
+      strategy: migrate
+  connection: # Connection pooling configuration
+    pool:
+      max:
+        size: 15
+proxy:
+  enabled: false
+  host: cs.pr-proxy.service.sd.diod.tech
+  port: 3128
+
+logging:
+  config: 'classpath:log4j2-dev.xml'
